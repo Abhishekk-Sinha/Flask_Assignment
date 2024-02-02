@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  -->
+    
+    <title>File Upload Demo</title>
+</head>
+<body>
+    <h1>File Upload Demo</h1>
+
+    <form method="post" enctype="multipart/form-data" action="/upload">
+        <input type="file" name="file" accept=".png, .jpg, .jpeg, .gif" required>
+        <button type="submit">Upload</button>
+    </form>
+
+    {% if filename %}
+        <p>Uploaded file: <a href="{{ url_for('uploaded_file', filename=filename) }}" target="_blank">{{ filename }}</a></p>
+        <img src="{{ url_for('uploaded_file', filename=filename) }}" alt="Uploaded Image">
+    {% endif %}
+</body>
+</html>
